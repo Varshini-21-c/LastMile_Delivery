@@ -1,0 +1,30 @@
+services:
+  # Backend Spring Boot Web Service
+  - type: web
+    name: delivery-tracker-backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: SERVER_PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+
+  # Frontend Static Site
+  - type: web
+    name: delivery-tracker-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: delivery-tracker-backend
+          property: host
