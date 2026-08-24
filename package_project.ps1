@@ -24,6 +24,7 @@ Copy-Item -Path (Join-Path $sourceDir "frontend\package.json") -Destination $fro
 Copy-Item -Path (Join-Path $sourceDir "frontend\vite.config.js") -Destination $frontendDest
 Copy-Item -Path (Join-Path $sourceDir "frontend\index.html") -Destination $frontendDest
 Copy-Item -Path (Join-Path $sourceDir "frontend\Dockerfile") -Destination $frontendDest
+Copy-Item -Path (Join-Path $sourceDir "frontend\vercel.json") -Destination $frontendDest
 Copy-Item -Recurse -Path (Join-Path $sourceDir "frontend\src") -Destination (Join-Path $frontendDest "src")
 Copy-Item -Recurse -Path (Join-Path $sourceDir "frontend\public") -Destination (Join-Path $frontendDest "public")
 
@@ -32,6 +33,7 @@ Copy-Item -Path (Join-Path $sourceDir "README.md") -Destination $tempDir
 Copy-Item -Path (Join-Path $sourceDir "SYSTEM_DESIGN.md") -Destination $tempDir
 Copy-Item -Path (Join-Path $sourceDir ".env.example") -Destination $tempDir
 Copy-Item -Path (Join-Path $sourceDir "docker-compose.yml") -Destination $tempDir
+Copy-Item -Path (Join-Path $sourceDir "render.yaml") -Destination $tempDir
 
 # Create Zip
 if (Test-Path $zipPath) {

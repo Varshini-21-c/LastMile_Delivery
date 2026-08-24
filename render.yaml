@@ -13,11 +13,12 @@ services:
         value: prod
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: delivery-tracker-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm run build
-    staticPublishPath: dist
+    staticPublishPath: ./dist
     routes:
       - type: rewrite
         source: /*
