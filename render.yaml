@@ -2,10 +2,9 @@ services:
   # Backend Spring Boot Web Service
   - type: web
     name: delivery-tracker-backend
-    runtime: java
+    runtime: docker
     rootDir: backend
-    buildCommand: mvn clean package -DskipTests
-    startCommand: java -jar target/tracker-1.0.0.jar
+    dockerfilePath: Dockerfile
     envVars:
       - key: SERVER_PORT
         value: 8080
